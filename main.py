@@ -25,7 +25,6 @@ class CollageApp(QMainWindow):
     def init_ui(self):
         main_layout = QVBoxLayout()
 
-        # Buttons
         button_layout = QHBoxLayout()
         btn_add_images = QPushButton("Add Images")
         btn_add_images.clicked.connect(self.add_images)
@@ -45,15 +44,12 @@ class CollageApp(QMainWindow):
 
         main_layout.addLayout(button_layout)
 
-        # Image list
         self.list_widget = QListWidget()
         self.list_widget.setSelectionMode(QListWidget.ExtendedSelection)
         main_layout.addWidget(self.list_widget)
 
-        # Customization options
         options_layout = QHBoxLayout()
         
-        # Output folder
         btn_output_folder = QPushButton("Select Save Folder")
         btn_output_folder.clicked.connect(self.select_output_folder)
         options_layout.addWidget(btn_output_folder)
@@ -61,12 +57,10 @@ class CollageApp(QMainWindow):
         self.line_output_folder = QLineEdit(self.output_path)
         options_layout.addWidget(self.line_output_folder)
 
-        # Output name
         self.line_output_name = QLineEdit(self.output_name)
         options_layout.addWidget(QLabel("Name:"))
         options_layout.addWidget(self.line_output_name)
 
-        # Collage width
         self.spin_collage_width = QSpinBox()
         self.spin_collage_width.setRange(200, 5000)
         self.spin_collage_width.setValue(self.collage_width)
@@ -75,18 +69,15 @@ class CollageApp(QMainWindow):
 
         main_layout.addLayout(options_layout)
 
-        # Create collage button
         btn_create_collage = QPushButton("Create Collage")
         btn_create_collage.clicked.connect(self.create_collage)
         main_layout.addWidget(btn_create_collage)
 
-        # Collage preview
         self.label_collage = QLabel("Your collage will appear here.")
         self.label_collage.setAlignment(Qt.AlignCenter)
         self.label_collage.setMinimumHeight(400)
         main_layout.addWidget(self.label_collage)
 
-        # Set main widget
         container = QWidget()
         container.setLayout(main_layout)
         self.setCentralWidget(container)
